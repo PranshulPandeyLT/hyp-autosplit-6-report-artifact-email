@@ -8,7 +8,10 @@ on:
       accessKey:
         description: LT Access Key
         required: true
-  
+      sampleRepoLink:
+        description: Link to the HyperExecute sample repo
+        default: https://github.com/john190501/hyp-autosplit-6-report-artifact-email
+        
 jobs:
   HyperExecute-Autosplit-6-Concurrency:
     runs-on: ubuntu-latest
