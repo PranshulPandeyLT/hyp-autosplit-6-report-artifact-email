@@ -35,11 +35,13 @@ jobs:
         run: |
           cd hyp-autosplit-6-report-artifact-email
           curl https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe -o hyperexecute.exe
+          export PATH="$PWD/hyperexecute.exe:$PATH"  # Add directory to PATH
           export LT_USERNAME=${{ github.event.inputs.username }}
           export LT_ACCESS_KEY=${{ github.event.inputs.accessKey }}
           echo $LT_USERNAME
           echo $LT_ACCESS_KEY
+      
       - name: Executing Job
         shell: bash
         run: |
-          ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config yaml/autosplit_win.yaml --download-artifacts --download-report
+          hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config yaml/autosplit_win.yaml --download-artifacts --download-report
