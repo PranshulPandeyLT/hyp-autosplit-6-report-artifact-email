@@ -16,6 +16,7 @@ on:
 jobs:
   HyperExecute-Autosplit-6-Concurrency:
     runs-on: windows-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -42,4 +43,4 @@ jobs:
       - name: Executing the Job
         shell: bash
         run: |
-          ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config yaml/autosplit_win.yaml --download-artifacts --download-report
+          hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config yaml/autosplit_win.yaml --download-artifacts --download-report
